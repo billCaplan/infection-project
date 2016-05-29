@@ -1,1 +1,86 @@
 <h1>Homepage</h1>
+<p>
+  associations are broken FYI the taught and attended associations dont work
+</p>
+<p>
+Order of operations:
+</p>
+<ul>
+  <li>Choose a User</li>
+  <li>run through all their classes - attended and taught</li>
+  <li>....</li>
+  <li>add original user to a checked student set</li>
+  <li>take the list of associated users and</li>
+  <li>check if the user is already checked: if not run and add, if yes, skip</li>
+  <li>Run means to run through classes - attended and taught - and find those associated students</li>
+
+</ul>
+
+
+<!-- Block FOcused on Students -->
+<p>
+  Students
+</p>
+<div style="background-color:green;">
+  <% @users.each do |student| %>
+
+    <div class="" style="background-color:cornflowerblue;">
+      <h2>Student Name</h2>
+
+        <%= student.name %>
+        <div style="border:5px black;">
+
+          <%= student.total_infection %>
+        </div>
+      <h3>Classes Attended</h3>
+      <% student.classes_attended.each do |course| %>
+      <%= course.course_name %>
+        <% course.students.each do |student| %>
+        <p>
+          <%= student.name %>
+        </p>
+        <% end %>
+      <% end %>
+
+      <h3>Classes Taught</h3>
+      <% student.classes_taught.each do |course| %>
+        <h5>Class Name</h5>
+      <%= course.course_name %>
+      <div style="padding:5px; background-color:yellow;">
+        <% course.students.each do |student| %>
+        <p>
+          <%= student.name %>
+        </p>
+        <% end %>
+
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Block FOcused on Classes -->
+<div style="background-color:blue;">
+  <p>
+    Classes
+  </p>
+  <% @courses.each do |course| %>
+  <h2>Course Name</h2>
+    <div class="">
+      <p>
+        <%= course.course_name %>
+      </p>
+      <h3>Teacher</h3>
+      <p>
+        <%= course.teacher.name %>
+      </p>
+      <h3>Students</h3>
+      <% course.students.each do |student| %>
+      <p>
+        <%= student.name %>
+      </p>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>
