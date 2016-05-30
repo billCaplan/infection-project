@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+ .grey-background-zone{
+  background: lightgrey;
+  padding: 5px;
+  border-width: medium;
+  border-radius: 5px;
+  border-color: black;
+ }
+ .course-zone{
+   background: lightgreen;
+   width: 20%;
+   float:left;
+   margin:10px;
+   padding: 5px;
+   border-radius: 5px;
+ }
+
+ .overall-course-zone{
+   padding:5px;
+ }
+
+ tr:hover {background-color: #f5f5f5}
+
+ .form{
+   border-width: thick;
+   border-color: black;
+   height: 141px;
+   padding:5px;
+ }
+
+ 

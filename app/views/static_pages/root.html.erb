@@ -1,9 +1,7 @@
 <div class="">
   <div class="">
-    <h1>Homepage</h1>
-    <p>
-      associations are broken FYI the taught and attended associations dont work
-    </p>
+    <h1>Khan Academy Infection Problem</h1>
+
     <p>
     Order of operations:
     </p>
@@ -23,49 +21,94 @@
     </p>
   </div>
 
-<form class="" action="<%= change_amount_static_pages_url %>" method="post">
-  <input
-      type="hidden"
-      name="authenticity_token"
-      value="<%= form_authenticity_token %>">
-  <label for="">Desired Infection Number</label>
-  <input type="hidden" name="limited_infection[id]" value=1>
-  <input type="text" name="limited_infection[val]" id="user_name">
-  <input type="submit" name="name" value="Check Possible Limit">
-</form>
-
-<div id="limited_infection_result">
-  <% value = @infect_amount %>
-
-  <span><%= @infect_amount %> </span>
-  <% limited_result = limited_infection(value) %>
-  <% if (limited_result.is_a?(String)) %>
-    <span><%= limited_result %></span>
-  <% else %>
-    <% limited_result.each do |limited_result| %>
-      <%= limited_result %> <br>
-    <% end %>
-  <% end %>
-</div>
-
-
-
-  <!-- New User Form -->
-  <div class="" style="margin:10px; display:block; background-color:cornflowerblue;">
-    <div class="" style="width: 33.333333%; float:left;">
+  <div class="">
+    <div class="input-group form" style="width: 33.333333%; float:left;">
       <%= render 'layouts/new_user' %>
     </div>
-    <div class="" style="width: 33.333333%; float:left;">
+    <div class="input-group form" style="width: 33.333333%; float:left;">
       <%= render 'layouts/new_class' %>
     </div>
-    <div class="" style="width: 33.333333%; float:left;">
+    <div class="input-group form" style="width: 33.333333%; float:left;">
       <%= render 'layouts/new_enrollments' %>
     </div>
   </div>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div class="grey-background-zone">
+    <!--MAKE THIS THE FOCUS  -->
+    <div class="">
+      <form class="" action="<%= change_amount_static_pages_url %>" method="post">
+        <input
+            type="hidden"
+            name="authenticity_token"
+            value="<%= form_authenticity_token %>">
+        <label for="">Desired Infection Number</label>
+        <input type="hidden" name="limited_infection[id]" value=1>
+        <input type="text" name="limited_infection[val]" id="user_name" placeholder="<%= @infect_amount %>">
+        <input type="submit" name="name" value="Check Possible Limit">
+      </form>
+    </div>
+
+    <br><br><br>
+
+    <div id="limited_infection_result">
+    <% value = @infect_amount %>
+
+    <% limited_result = limited_infection(value) %>
+    <% if (limited_result.is_a?(String)) %>
+      <span><%= limited_result %></span>
+    <% else %>
+
+      <% limited_result.each do |limited_person| %>
+      <table class="table">
+        <tr>
+          <th>
+            Root Student Name
+          </th>
+          <th>
+            Infection Number
+          </th>
+          <th>
+            Classes they Infect
+          </th>
+          <th>
+            Students they Infect
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <%= limited_person[4].name %>
+          </td>
+
+            <td>
+              <%= limited_person[0] %>
+            </td>
+            <td>
+              <% limited_person[1].each do |limited_course| %>
+                <%= limited_course.course_name %>
+                <% end %>
+            </td>
+            <td>
+              <% limited_person[2].each do |limited_student| %>
+                <%= limited_student.name %>
+                <% end %>
+            </td>
+          </tr>
+
+      </table>
+      <% end %>
+    <% end %>
+  </div>
+
+  </div>
+
+  <!-- New User Form -->
+<br><br><br><br>
 <!-- List of Users and their infection stats -->
-  <div style="background-color:green; margin:10px;">
-    <table>
+  <div class="grey-background-zone">
+    <h1>List of Students</h1>
+    <table class="table">
       <tr>
         <th>
           Name
@@ -112,13 +155,13 @@
   </div>
 
   <!-- Block FOcused on Classes -->
-  <div style="background-color:lightgrey;">
+  <div class="overall-course-zone">
     <h1>
       Classes
     </h1>
     <% @courses.each do |course| %>
+    <div class="course-zone">
       <h2>Course Name</h2>
-        <div class="">
           <p>
             <%= course.course_name %>
           </p>
@@ -131,7 +174,6 @@
           <p>
             <%= student.name %>
           </p>
-
           <% end %>
         </div>
     <% end %>

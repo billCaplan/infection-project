@@ -5,6 +5,7 @@ module StaticPagesHelper
     @users.each do |student|
       result = student.total_infection
       if (result[0] === desired_number)
+        result[4] = student
         valid_options.push(result)
       end
     end
