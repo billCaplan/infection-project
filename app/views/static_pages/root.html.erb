@@ -1,98 +1,112 @@
-<h1>Homepage</h1>
-<p>
-  associations are broken FYI the taught and attended associations dont work
-</p>
-<p>
-Order of operations:
-</p>
-<ul>
-  <li>Choose a User</li>
-  <li>run through all their classes - attended and taught</li>
-  <li>....</li>
-  <li>add original user to a checked student set</li>
-  <li>take the list of associated users and</li>
-  <li>check if the user is already checked: if not run and add, if yes, skip</li>
-  <li>Run means to run through classes - attended and taught - and find those associated students</li>
+<div class="">
 
-</ul>
+  <h1>Homepage</h1>
+  <p>
+    associations are broken FYI the taught and attended associations dont work
+  </p>
+  <p>
+  Order of operations:
+  </p>
+  <ul>
+    <li>Choose a User</li>
+    <li>run through all their classes - attended and taught</li>
+    <li>....</li>
+    <li>add original user to a checked student set</li>
+    <li>take the list of associated users and</li>
+    <li>check if the user is already checked: if not run and add, if yes, skip</li>
+    <li>Run means to run through classes - attended and taught - and find those associated students</li>
 
+  </ul>
 
-<!-- Block FOcused on Students -->
-<p>
-  Students
-</p>
-<p>
-  This is going to be an array, first being the total student infection number, second being the infected classes, third being the infected students
-</p>
-<div style="background-color:green;">
-  <table>
-    <tr>
-      <th>
-        Name
-      </th>
-      <th>
-        Infection Number
-      </th>
-      <th>
-        Classes they Infect
-      </th>
-      <th>
-        Students they Infect
-      </th>
-    </tr>
+  <p>
+    This is going to be an array, first being the total student infection number, second being the infected classes, third being the infected students
+  </p>
 
+  <!-- New User Form -->
+  <div class="" style="margin:10px; display:block;">
+    <div class="" style="width: 33.333333%; float:left;">
+      <%= render 'layouts/new_user' %>
+    </div>
+    <div class="" style="width: 33.333333%; float:left;">
+      <%= render 'layouts/new_class' %>
+    </div>
+    <div class="" style="width: 33.333333%; float:left;">
+      <%= render 'layouts/new_enrollments' %>
+    </div>
+  </div>
 
-  <% @users.each do |student| %>
-    <% student_result = student.total_infection %>
+<!-- List of Users and their infection stats -->
+  <div style="background-color:green; margin:10px;">
+    <table>
       <tr>
-        <td>
-          <%= student.name %>
-        </td>
-        <td>
-          <%= student_result[0] %>
-        </td>
-        <td>
-
-          <% string = "" %>
-          <% student_result[1].each do |result_class| %>
-          <% string += " #{result_class.course_name}" %>
-          <% end %>
-          <%= string %>
-        </td>
-        <td>
-          <% string = "" %>
-          <% student_result[2].each do |result_student| %>
-          <% string += " #{result_student.name}" %>
-          <% end %>
-          <%= string %>
-        </td>
+        <th>
+          Name
+        </th>
+        <th>
+          Infection Number
+        </th>
+        <th>
+          Classes they Infect
+        </th>
+        <th>
+          Students they Infect
+        </th>
       </tr>
-  <% end %>
-  </table>
-</div>
 
-<!-- Block FOcused on Classes -->
-<div style="background-color:lightgrey;">
-  <h1>
-    Classes
-  </h1>
-  <% @courses.each do |course| %>
-    <h2>Course Name</h2>
-      <div class="">
-        <p>
-          <%= course.course_name %>
-        </p>
-        <h3>Teacher</h3>
-        <p>
-          <%= course.teacher.name %>
-        </p>
-        <h3>Students</h3>
-        <% course.students.each do |student| %>
-        <p>
-          <%= student.name %>
-        </p>
 
-        <% end %>
-      </div>
-  <% end %>
+    <% @users.each do |student| %>
+      <% student_result = student.total_infection %>
+        <tr>
+          <td>
+            <%= student.name %>
+          </td>
+          <td>
+            <%= student_result[0] %>
+          </td>
+          <td>
+
+            <% string = "" %>
+            <% student_result[1].each do |result_class| %>
+            <% string += " #{result_class.course_name}" %>
+            <% end %>
+            <%= string %>
+          </td>
+          <td>
+            <% string = "" %>
+            <% student_result[2].each do |result_student| %>
+            <% string += " #{result_student.name}" %>
+            <% end %>
+            <%= string %>
+          </td>
+        </tr>
+    <% end %>
+    </table>
+  </div>
+
+  <!-- Block FOcused on Classes -->
+  <div style="background-color:lightgrey;">
+    <h1>
+      Classes
+    </h1>
+    <% @courses.each do |course| %>
+      <h2>Course Name</h2>
+        <div class="">
+          <p>
+            <%= course.course_name %>
+          </p>
+          <h3>Teacher</h3>
+          <p>
+            <%= course.teacher.name %>
+          </p>
+          <h3>Students</h3>
+          <% course.students.each do |student| %>
+          <p>
+            <%= student.name %>
+          </p>
+
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+
 </div>
