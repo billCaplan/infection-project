@@ -34,14 +34,10 @@ class User < ActiveRecord::Base
     seen_classes = Hash.new("no")
 
     affected_classes_list = []
-
-
-
     #  FN 1 Now I take the student, find their classes, taught and student, and grab those associated students
 
-    # FN 2
-
     while true
+      seen_students[target_student] = "yes"
       class_student_retrieve_queue = []
 
 
@@ -72,7 +68,6 @@ class User < ActiveRecord::Base
           seen_students[class_queue_item.teacher] = "yes"
           infected_student_queue.push(class_queue_item.teacher)
         end
-
         class_queue_item.students.each do |class_queue_item_student|
           if (seen_students[class_queue_item_student] === "no")
             # if the teacher has not been seen_students
@@ -80,32 +75,24 @@ class User < ActiveRecord::Base
             infected_student_queue.push(class_queue_item_student)
           end
         end
-
-        # now the new classes have been analyzed and the students added to the queue
-
-        if infected_student_queue.length === 0
-          break
-        else
-
-          target_student = infected_student_queue.shift
-
-          p " Infected student queue = #{new_associated_classes.length}"
-          p " Infected student list = #{infected_student_list.length}"
-      
-        end
       end
-
-
+        # now the new classes have been analyzed and the students added to the queue
+      if infected_student_queue.length === 0
+        break
+      else
+        target_student = infected_student_queue.shift
+      end
     end
-
     return [total_infected_amount,affected_classes_list, infected_student_list]
-
   end
+
+
 
   private
 
   def associated_classes(origin_student)
     classes_affected = []
+
     origin_student.classes_taught.each do |class_item|
       classes_affected.push(class_item)
     end

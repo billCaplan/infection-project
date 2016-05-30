@@ -21,66 +21,78 @@ Order of operations:
 <p>
   Students
 </p>
+<p>
+  This is going to be an array, first being the total student infection number, second being the infected classes, third being the infected students
+</p>
 <div style="background-color:green;">
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Infection Number
+      </th>
+      <th>
+        Classes they Infect
+      </th>
+      <th>
+        Students they Infect
+      </th>
+    </tr>
+
+
   <% @users.each do |student| %>
-
-    <div class="" style="background-color:cornflowerblue;">
-      <h2>Student Name</h2>
-
-        <%= student.name %>
-        <div style="border:5px black;">
-
-          <%= student.total_infection %>
-        </div>
-      <h3>Classes Attended</h3>
-      <% student.classes_attended.each do |course| %>
-      <%= course.course_name %>
-        <% course.students.each do |student| %>
-        <p>
+    <% student_result = student.total_infection %>
+      <tr>
+        <td>
           <%= student.name %>
-        </p>
-        <% end %>
-      <% end %>
+        </td>
+        <td>
+          <%= student_result[0] %>
+        </td>
+        <td>
 
-      <h3>Classes Taught</h3>
-      <% student.classes_taught.each do |course| %>
-        <h5>Class Name</h5>
-      <%= course.course_name %>
-      <div style="padding:5px; background-color:yellow;">
-        <% course.students.each do |student| %>
-        <p>
-          <%= student.name %>
-        </p>
-        <% end %>
-
-      </div>
-      <% end %>
-    </div>
+          <% string = "" %>
+          <% student_result[1].each do |result_class| %>
+          <% string += " #{result_class.course_name}" %>
+          <% end %>
+          <%= string %>
+        </td>
+        <td>
+          <% string = "" %>
+          <% student_result[2].each do |result_student| %>
+          <% string += " #{result_student.name}" %>
+          <% end %>
+          <%= string %>
+        </td>
+      </tr>
   <% end %>
+  </table>
 </div>
 
 <!-- Block FOcused on Classes -->
-<div style="background-color:blue;">
-  <p>
+<div style="background-color:lightgrey;">
+  <h1>
     Classes
-  </p>
+  </h1>
   <% @courses.each do |course| %>
-  <h2>Course Name</h2>
-    <div class="">
-      <p>
-        <%= course.course_name %>
-      </p>
-      <h3>Teacher</h3>
-      <p>
-        <%= course.teacher.name %>
-      </p>
-      <h3>Students</h3>
-      <% course.students.each do |student| %>
-      <p>
-        <%= student.name %>
-      </p>
+    <h2>Course Name</h2>
+      <div class="">
+        <p>
+          <%= course.course_name %>
+        </p>
+        <h3>Teacher</h3>
+        <p>
+          <%= course.teacher.name %>
+        </p>
+        <h3>Students</h3>
+        <% course.students.each do |student| %>
+        <p>
+          <%= student.name %>
+        </p>
 
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   <% end %>
 </div>
