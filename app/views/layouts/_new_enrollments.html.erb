@@ -6,7 +6,7 @@
       value="<%= form_authenticity_token %>">
 
     <label for="enrollment_student_id">Coat color</label>
-    <!-- dropdown -->
+
     <select name="enrollment[student_id]">
       <% @users.each do |user| %>
           <option value="<%= user.id %>"><%= user.name %></option>
@@ -16,7 +16,7 @@
 
 
   <label for="enrollment_course_id">Coat color</label>
-  <!-- dropdown -->
+
   <select name="enrollment[course_id]">
     <% @courses.each do |course| %>
         <option value="<%= course.id %>"><%= course.course_name %></option>
@@ -29,9 +29,4 @@
 
   <input type="submit" value="Build my enrollments!">
 
-  <!--
-    Other uncovered input types:
-    hidden field
-    check box
-    -->
 </form>

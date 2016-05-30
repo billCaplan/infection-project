@@ -4,12 +4,12 @@
       type="hidden"
       name="authenticity_token"
       value="<%= form_authenticity_token %>">
-  <!-- label's `for` attribute connects with the input's `id` attribute-->
+
   <label for="user_name">Student Name</label>
-  <!-- input name `cat[name]` means that Rails will nest the `name` attribute
-       inside a `cat` hash: `{ :cat => { :name => "gizmo" } }` -->
+
   <input name="user[name]" id="user_name" type="text">
   <br>
 
 
   <input type="submit" value="Create New User!">
+</form>

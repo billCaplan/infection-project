@@ -4,33 +4,23 @@
       type="hidden"
       name="authenticity_token"
       value="<%= form_authenticity_token %>">
-  <!-- label's `for` attribute connects with the input's `id` attribute-->
+
   <label for="course_course_name">Course name</label>
-  <!-- input name `course[name]` means that Rails will nest the `name` attribute
-       inside a `course` hash: `{ :course => { :name => "gizmo" } }` -->
+
   <input name="course[course_name]" id="course_course_name" type="text">
   <br>
 
-
-
   <label for="course_teacher_id">Teacher</label>
-  <!-- dropdown -->
+
   <select name="course[teacher_id]">
     <% @users.each do |user| %>
         <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
-    <!-- `brown` is the value that will be submitted to the server; user is
-         displayed "Brown" as the choice -->
+
 
   </select>
   <br>
 
-
   <input type="submit" value="Build my course!">
 
-  <!--
-    Other uncovered input types:
-    hidden field
-    check box
-    -->
 </form>
