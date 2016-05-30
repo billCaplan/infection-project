@@ -1,26 +1,54 @@
 <div class="">
+  <div class="">
+    <h1>Homepage</h1>
+    <p>
+      associations are broken FYI the taught and attended associations dont work
+    </p>
+    <p>
+    Order of operations:
+    </p>
+    <ul>
+      <li>Choose a User</li>
+      <li>run through all their classes - attended and taught</li>
+      <li>....</li>
+      <li>add original user to a checked student set</li>
+      <li>take the list of associated users and</li>
+      <li>check if the user is already checked: if not run and add, if yes, skip</li>
+      <li>Run means to run through classes - attended and taught - and find those associated students</li>
 
-  <h1>Homepage</h1>
-  <p>
-    associations are broken FYI the taught and attended associations dont work
-  </p>
-  <p>
-  Order of operations:
-  </p>
-  <ul>
-    <li>Choose a User</li>
-    <li>run through all their classes - attended and taught</li>
-    <li>....</li>
-    <li>add original user to a checked student set</li>
-    <li>take the list of associated users and</li>
-    <li>check if the user is already checked: if not run and add, if yes, skip</li>
-    <li>Run means to run through classes - attended and taught - and find those associated students</li>
+    </ul>
 
-  </ul>
+    <p>
+      This is going to be an array, first being the total student infection number, second being the infected classes, third being the infected students
+    </p>
+  </div>
 
-  <p>
-    This is going to be an array, first being the total student infection number, second being the infected classes, third being the infected students
-  </p>
+<form class="" action="<%= change_amount_static_pages_url %>" method="post">
+  <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+  <label for="">Desired Infection Number</label>
+  <input type="hidden" name="limited_infection[id]" value=1>
+  <input type="text" name="limited_infection[val]" id="user_name">
+  <input type="submit" name="name" value="Check Possible Limit">
+</form>
+
+<div id="limited_infection_result">
+  <% value = @infect_amount %>
+
+  <span><%= @infect_amount %> </span>
+  <% limited_result = limited_infection(value) %>
+  <% if (limited_result.is_a?(String)) %>
+    <span><%= limited_result %></span>
+  <% else %>
+    <% limited_result.each do |limited_result| %>
+      <%= limited_result %> <br>
+    <% end %>
+  <% end %>
+</div>
+
+
 
   <!-- New User Form -->
   <div class="" style="margin:10px; display:block; background-color:cornflowerblue;">
@@ -34,7 +62,7 @@
       <%= render 'layouts/new_enrollments' %>
     </div>
   </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- List of Users and their infection stats -->
   <div style="background-color:green; margin:10px;">
     <table>
