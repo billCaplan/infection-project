@@ -1,26 +1,27 @@
-<div class="">
+<div class="" style="padding:10px;">
   <div class="">
     <h1>Khan Academy Infection Problem</h1>
 
     <p>
-    Order of operations:
+    Welcome to the Khan Academy A/B Testing Suite.  Here you can do the following:
     </p>
     <ul>
-      <li>Choose a User</li>
-      <li>run through all their classes - attended and taught</li>
-      <li>....</li>
-      <li>add original user to a checked student set</li>
-      <li>take the list of associated users and</li>
-      <li>check if the user is already checked: if not run and add, if yes, skip</li>
-      <li>Run means to run through classes - attended and taught - and find those associated students</li>
-
+      <li>See a list of all active Users and Classes</li>
+      <li>See what version of the software each User is running</li>
+      <li>Add Classes and Users, and Enroll Users in Classes</li>
+      <li>See what the effect will be of changing a User's Version</li>
+      <li>See what User to change, in order to have X number of students using a specific version</li>
     </ul>
-
+<br><br>
     <p>
-      This is going to be an array, first being the total student infection number, second being the infected classes, third being the infected students
+      The total_infection method is written on the User class, allowing it to be called on any user, and determine how many users they will infect.
+    </p>
+    <p>
+      The limited_infection method is written on the StaticPagesHelper page.  It runs through all the Users, and saves those who meet the magic Infection number.
     </p>
   </div>
 
+<br>
   <div class="">
     <div class="input-group form" style="width: 25%; float:left;">
       <%= render 'layouts/new_user' %>
