@@ -6,15 +6,28 @@ class EnrollmentsController < ApplicationController
     course = Course.find(params[:enrollment][:course_id])
     course_teacher = course.teacher
 
-    if @enrollment.save
-      if student.version.nil?
-        student.update({:version => course_teacher.version})
-      end
-        redirect_to root_url
-    else
+    if(student.id === course.teacher_id )
       flash.now[:errors] = @enrollment.errors.full_messages
       redirect_to root_url
+    else
+      if @enrollment.save
+        if student.version.nil?
+          student.update({:version => course_teacher.version})
+        end
+          redirect_to root_url
+      else
+        flash.now[:errors] = "This student already teaches the class"
+        redirect_to root_url
+      end
     end
+  end
+
+  def destroy
+
+    @enrollment = Enrollment.where(course_id: params[:course_id], student_id: params[:student_id])
+
+    Enrollment.destroy(@enrollment.first.id)
+    redirect_to root_url
   end
 
   private

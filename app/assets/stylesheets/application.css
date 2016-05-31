@@ -14,6 +14,15 @@
  *= require_self
  */
 
+ .teacher-name-area{
+   background: lightgrey;
+   padding:10px;
+   border-width: medium;
+   border-radius: 5px;
+   border-color: black;
+   font-weight: bold;
+ }
+
  .grey-background-zone{
   background: lightgrey;
   padding: 5px;
@@ -21,17 +30,20 @@
   border-radius: 5px;
   border-color: black;
  }
+
  .course-zone{
-   background: #00CCFF;
-   width: 20%;
+   background: #D8D8D8 ;
    float:left;
-   margin:10px;
+   margin:2px;
    padding: 5px;
    border-radius: 5px;
+
  }
 
  .overall-course-zone{
    padding:5px;
+   display: inline-block;
+   clear: left;
  }
 
  tr:hover {background-color: #f5f5f5}

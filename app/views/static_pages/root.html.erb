@@ -180,23 +180,33 @@
       Classes
     </h1>
     <% @courses.each do |course| %>
-    <div class="course-zone">
-      <h2>Course Name</h2>
-          <p>
-            <%= course.course_name %>
-          </p>
+      <div class="panel panel-default course-zone">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><%= course.course_name %></div>
+        <div class="panel-body">
           <h3>Teacher</h3>
-          <p>
+          <p class="teacher-name-area">
             <%= course.teacher.name %>
           </p>
-          <h3>Students</h3>
-          <% course.students.each do |student| %>
-          <p>
-            <%= student.name %>
-          </p>
-          <% end %>
         </div>
+        <div class="panel-body">
+          <h3>Students</h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <% course.students.each do |student| %>
+            <li class="list-group-item">
+                  <span><%= student.name %></span>
+                  <%= button_to "Withdraw", {:controller => :enrollments,
+      :action => 'destroy', :student_id => student.id, :course_id => course.id, :id => 1 }, :method => :delete %>
+  </li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
+  </div>
+
   </div>
 
 </div>
