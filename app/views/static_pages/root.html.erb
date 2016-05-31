@@ -88,14 +88,21 @@
               <%= limited_person[0] %>
             </td>
             <td>
+
+              <% string = [] %>
               <% limited_person[1].each do |limited_course| %>
-                <%= limited_course.course_name %>
-                <% end %>
+              <% string.push("#{limited_course.course_name}") %>
+              <% end %>
+              <%= string.join(", ") %>
+
             </td>
             <td>
+              <% string = [] %>
               <% limited_person[2].each do |limited_student| %>
-                <%= limited_student.name %>
-                <% end %>
+              <% string.push("#{limited_student.name}") %>
+              <% end %>
+              <%= string.join(", ") %>
+
             </td>
           </tr>
 
@@ -145,18 +152,18 @@
           </td>
           <td>
 
-            <% string = "" %>
+            <% string = [] %>
             <% student_result[1].each do |result_class| %>
-            <% string += " #{result_class.course_name}" %>
+            <% string.push("#{result_class.course_name}") %>
             <% end %>
-            <%= string %>
+            <%= string.join(", ") %>
           </td>
           <td>
-            <% string = "" %>
+            <% string = [] %>
             <% student_result[2].each do |result_student| %>
-            <% string += " #{result_student.name}" %>
+            <% string.push("#{result_student.name}") %>
             <% end %>
-            <%= string %>
+            <%= string.join(", ") %>
           </td>
         </tr>
     <% end %>
