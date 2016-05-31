@@ -7,23 +7,41 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # 1
 User.create({
-  name: "Bill"
+  name: "Bill Caplan"
 })
 # 2
 User.create({
-  name: "Sam"
+  name: "Sam Thompson"
 })
 # 3
 User.create({
-  name: "Tony"
+  name: "Tony Jones"
 })
 # 4
 User.create({
-  name: "Kevin"
+  name: "Kevin Walter"
 })
 # 5
 User.create({
-  name: "David"
+  name: "Sarah Smith"
+})
+User.create({
+  name: "Sidney Crosby"
+})
+User.create({
+  name: "Amanda Collins"
+})
+User.create({
+  name: "Phil Kessel"
+})
+User.create({
+  name: "Steph Curry"
+})
+User.create({
+  name: "Kristen Smith"
+})
+User.create({
+  name: "Brit Thompson"
 })
 # 1
 Course.create({
