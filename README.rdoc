@@ -1,5 +1,8 @@
 == Khan Academy Infection Problem
 
+The live version of this project can be found at:
+http://khan-academy-infection-problem.herokuapp.com/
+
 
 
 
