@@ -22,7 +22,7 @@
   border-color: black;
  }
  .course-zone{
-   background: lightgreen;
+   background: #00CCFF;
    width: 20%;
    float:left;
    margin:10px;
@@ -42,5 +42,3 @@
    height: 141px;
    padding:5px;
  }
-
- 

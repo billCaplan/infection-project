@@ -1,4 +1,7 @@
 class Enrollment < ActiveRecord::Base
+
+  validates :student_id, uniqueness: { scope: [:course_id] }
+
   has_one(
   :course,
   foreign_key: :id,
