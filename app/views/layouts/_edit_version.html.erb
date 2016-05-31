@@ -1,0 +1,25 @@
+<h2>Change the Users Version</h2>
+<form action="/users" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+
+  <label for="user_name">Student Name</label>
+
+
+  <select name="user[id]">
+    <% @users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+    <% end %>
+  </select>
+  <br>
+
+  <label for="user_version">New Version</label>
+
+  <input name="user[version]" id="user_version" type="text">
+
+
+  <input type="submit" value="Change Version - alters all linked students">
+</form>

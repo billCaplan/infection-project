@@ -11,6 +11,18 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def update
+    @user = User.find(params[:user][:id])
+    list_to_alter = @user.total_infection
+
+    list_to_alter[2].each do |student_to_alter|
+      @user = User.find(student_to_alter.id)
+      @user.update({:version => params[:user][:version]})
+    end
+    redirect_to root_url
+  end
+
   private
   def user_params
     params.require(:user).permit(:name)
