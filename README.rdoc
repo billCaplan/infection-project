@@ -3,6 +3,13 @@
 The live version of this project can be found at:
 http://khan-academy-infection-problem.herokuapp.com/
 
+The Total Infection method is at:
+https://github.com/billCaplan/infection-project/blob/master/app/models/user.rb
+
+
+The Limited Infection method is at:
+https://github.com/billCaplan/infection-project/blob/master/app/helpers/static_pages_helper.rb 
+
 
 
 
