@@ -71,26 +71,24 @@
       <table class="table">
         <tr>
           <th>
-            Root Student Name
-          </th>
-          <th>
             Infection Number
+
+          </th>
+
+          <th>
+            Infected Classes
           </th>
           <th>
-            Classes they Infect
-          </th>
-          <th>
-            Students they Infect
+            Students in Infection Map
           </th>
         </tr>
         <tr>
           <td>
-            <%= limited_person[4].name %>
+            <%= limited_person[0] %>
+
           </td>
 
-            <td>
-              <%= limited_person[0] %>
-            </td>
+
             <td>
 
               <% string = [] %>
@@ -101,12 +99,13 @@
 
             </td>
             <td>
-              <% string = [] %>
-              <% limited_person[2].each do |limited_student| %>
-              <% string.push("#{limited_student.name}") %>
-              <% end %>
-              <%= string.join(", ") %>
+              <ul>
 
+              <% limited_person[2].each do |limited_student| %>
+                <li><%= limited_student.name %></li>
+              <% end %>
+          
+              </ul>
             </td>
           </tr>
 
