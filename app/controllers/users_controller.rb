@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
 
   def update
+    debugger
     @user = User.find(params[:user][:id])
     list_to_alter = @user.total_infection
 

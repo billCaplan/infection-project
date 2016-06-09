@@ -12,7 +12,7 @@ class EnrollmentsController < ApplicationController
     else
       if @enrollment.save
         if student.version.nil?
-          student.update({:version => course_teacher.version})
+          student.update({:version => course_teacher.version}
         end
           redirect_to root_url
       else
