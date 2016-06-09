@@ -12,7 +12,15 @@ class EnrollmentsController < ApplicationController
     else
       if @enrollment.save
         if student.version.nil?
-          student.update({:version => course_teacher.version}
+          student.update({:version => course_teacher.version})
+        else
+          @user = User.find(params[:enrollment][:student_id])
+          list_to_alter = @user.total_infection
+
+          list_to_alter[2].each do |student_to_alter|
+            @user = User.find(student_to_alter.id)
+            @user.update({:version => params[:enrollment][:version]})
+          end
         end
           redirect_to root_url
       else

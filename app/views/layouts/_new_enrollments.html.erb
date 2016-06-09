@@ -24,6 +24,20 @@
   </select>
   <br>
 
+  <label for="enrollment_version">Version to give all associated students</label>
+  <select name="enrollment[version]">
+    <% versions = [] %>
+    <% @users.each do |user| %>
+        <% versions.push(user.version) unless user.version.nil? %>
+    <% end %>
+    <% versions = versions.uniq %>
+      <% versions.each do |version| %>
+          <option value="<%= version %>"><%= version %></option>
+      <% end %>
+  </select>
+  <br>
+
+
 
 
 

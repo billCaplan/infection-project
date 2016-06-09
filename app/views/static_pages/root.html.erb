@@ -24,6 +24,7 @@
     </p>
   </div>
 
+
 <br>
   <div class="">
     <div class="input-group form" style="width: 25%; float:left;">
@@ -83,20 +84,17 @@
           </th>
         </tr>
         <tr>
-          <td>
+          <td style="font-weight:bolder; font-size:xx-large;">
             <%= limited_person[0] %>
-
           </td>
 
-
             <td>
+              <ul>
+                <% limited_person[1].each do |limited_course| %>
+                  <li><%= limited_course.course_name %></li>
+                <% end %>
 
-              <% string = [] %>
-              <% limited_person[1].each do |limited_course| %>
-              <% string.push("#{limited_course.course_name}") %>
-              <% end %>
-              <%= string.join(", ") %>
-
+              </ul>
             </td>
             <td>
               <ul>
@@ -104,7 +102,7 @@
               <% limited_person[2].each do |limited_student| %>
                 <li><%= limited_student.name %></li>
               <% end %>
-          
+
               </ul>
             </td>
           </tr>

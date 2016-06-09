@@ -20,10 +20,6 @@ module StaticPagesHelper
             seen_students[infected_student] = "yes"
           end
 
-
-
-
-
         end
 
       end
